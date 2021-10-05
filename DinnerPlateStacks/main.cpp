@@ -18,7 +18,7 @@ int main(int, char**) {
     while(std::getline(ss, action, '"'))
     {
         if(action == ",") continue;
-        std::cout << "action: " << action << '\n';
+        // std::cout << "action: " << action << '\n';
         actions.emplace_back(move(action));
     }
 
@@ -36,7 +36,7 @@ int main(int, char**) {
         int n;
         ss3 >> n;
         values.push_back(n);
-        std::cout << "action: " << n << '\n';
+        // std::cout << "action: " << n << '\n';
         std::getline(ss2, action, ',');
         std::getline(ss2, action, '[');
     }

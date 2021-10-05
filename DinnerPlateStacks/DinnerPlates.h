@@ -3,7 +3,7 @@
 #include <stack>
 
 using namespace std;
-
+/*
 class DinnerPlates {
 private: 
     vector<stack<int> > v;
@@ -26,7 +26,7 @@ public:
             v.push_back({});
         }
         v[idx].push(val);
-        std::cout << "push: " << idx << "-" << val << "\n";
+        // std::cout << "push: " << idx << "-" << val << "\n";
         
         // update last if the idx is greater than it.
         if(last < idx) {            
@@ -48,7 +48,7 @@ public:
         if(v[last].size() == cap) {
             for_push.insert(last);
         }
-        
+        // std::cout << "pop: " << last << "-" << res << "\n";
         v[last].pop();
         while(last >= 0 && v[last].empty()) {
             --last;
@@ -73,10 +73,11 @@ public:
         if(index == last && v[index].empty()) {
             last--;
         }
+        // std::cout << "popat: " << index << "-" << res << "\n";
         return res;
     }
-};
-/*
+};*/
+
 class DinnerPlates {
 private:
     int capacity;
@@ -86,7 +87,7 @@ private:
     
     void setFlag(int index){
         if(stacks[index].empty()){
-            notFullStacks.erase(index);
+            notFullStacks.insert(index);
             allStacks.erase(index);
             return;
         }
@@ -109,14 +110,14 @@ public:
             int index = *notFullStacks.begin();
             stacks[index].push(val);
             setFlag(index);
-            std::cout << "push: " << index << "-" << val << "\n";
+            // std::cout << "push: " << index << "-" << val << "\n";
             return;
         }
         
         stacks.push_back(stack<int>());
         stacks.back().push(val);
         setFlag(stacks.size() - 1);
-        std::cout << "push: " << stacks.size() - 1 << "-" << val << "\n";
+        // std::cout << "push: " << stacks.size() - 1 << "-" << val << "\n";
     }
     
     int pop() {
@@ -128,6 +129,7 @@ public:
         int n = stacks[index].top();
         stacks[index].pop();
         setFlag(index);
+        // std::cout << "pop: " << index << "-" << n << "\n";
         return n;
     }
     
@@ -139,6 +141,7 @@ public:
         int n = stacks[index].top();
         stacks[index].pop();
         setFlag(index);
+        // std::cout << "popat: " << index << "-" << n << "\n";
         return n;
     }
-};*/
+};
